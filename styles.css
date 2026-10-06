@@ -56,6 +56,8 @@ svg {
 .header-inner { display: flex; align-items: center; gap: 24px; height: 72px; }
 
 .logo { display: flex; align-items: center; gap: 8px; line-height: 1; }
+.logo-mark { height: 30px; width: auto; display: block; }
+.logo-divider { width: 1px; height: 30px; background: rgba(255,255,255,.22); margin: 0 4px; }
 .logo-wmd {
   font-weight: 800; font-size: 28px; letter-spacing: -.02em;
   color: var(--magenta);
@@ -307,6 +309,19 @@ a.chip:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(13,27,46
 .org-logos--hosts { max-width: 640px; margin: 0 auto; }
 .org-logos--hosts li { flex-basis: calc((100% - 24px) / 3); }
 
+.org-support {
+  margin-top: 44px; padding-top: 40px;
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+.org-logos--support li { flex-basis: calc((100% - 36px) / 4); height: 100px; padding: 14px; }
+.org-logos--support img { max-height: 60px; }
+.day-note {
+  list-style: none;
+  font-size: 13px; color: var(--muted); font-style: italic;
+  padding-top: 18px; border-top: 1px solid var(--line);
+}
+
 /* ===== Footer ===== */
 .site-footer { background: var(--night-900); color: rgba(255,255,255,.65); font-size: 13px; }
 .footer-inner { display: flex; justify-content: space-between; gap: 16px; padding: 24px; flex-wrap: wrap; }
@@ -331,6 +346,8 @@ a.chip:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(13,27,46
 @media (max-width: 720px) {
   .container { padding: 0 16px; }
   .venue-grid { grid-template-columns: 1fr; }
+  .org-logos--support li { flex-basis: calc((100% - 10px) / 2); height: 84px; }
+  .org-logos--support img { max-height: 52px; }
   .org-logos { gap: 10px; }
   .org-logos li { flex-basis: calc((100% - 10px) / 2); }
   .org-logos--hosts li { flex-basis: calc((100% - 20px) / 3); height: 84px; padding: 10px; }

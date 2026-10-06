@@ -7,6 +7,7 @@
                se usan para mostrar el horario y para Google Calendar
    - access:  "abierto" o "invitacion"
    - mapsQuery: texto que se busca en Google Maps
+   - note:    aclaración opcional que se muestra debajo de las actividades
    - sessions: lista de actividades. Si está vacía se muestra
                "Programa detallado en preparación".
 
@@ -39,8 +40,17 @@ const AGENDA = [
     address: "Bahía Blanca esq. Pte. Perón",
     city: "San Salvador de Jujuy",
     mapsQuery: "Centro Cultural Éxodo Jujeño, San Salvador de Jujuy",
-    summary: "Jornada abierta a toda la comunidad: municipios, organizaciones y especialistas de la región y de todo el país.",
-    sessions: []
+    summary: "Jornada abierta a toda la comunidad: funcionarios, especialistas y organizaciones de la región y de todo el país.",
+    note: "El orden y los horarios de cada panel se confirmarán próximamente.",
+    sessions: [
+      {
+        start: "09:00", end: "16:00",
+        title: "Seminario: Diez años construyendo Gobernanza Metropolitana",
+        tag: "Seminario",
+        subtitle: "Institucionalidad metropolitana en Argentina",
+        description: "Paneles que abordarán los avances y desafíos de la institucionalidad metropolitana en Argentina, a diez años de los principales acuerdos vigentes, combinando la mirada de funcionarios y expertos."
+      }
+    ]
   },
   {
     label: "Día 2",
@@ -52,8 +62,17 @@ const AGENDA = [
     address: "Av. Congreso esq. Inti",
     city: "Palpalá, Jujuy",
     mapsQuery: "Hotel Casino Palpalá, Jujuy",
-    summary: "Jornada de trabajo con invitación para fortalecer los esquemas de gobernanza metropolitana.",
-    sessions: []
+    summary: "Jornada de trabajo con invitación para funcionarios y líderes de la comunidad.",
+    note: "El orden y los horarios de cada actividad se confirmarán próximamente.",
+    sessions: [
+      {
+        start: "08:00", end: "12:00",
+        title: "Relanzamiento del Parlamento Metropolitano de El Gran Jujuy",
+        tag: "Parlamento Metropolitano",
+        subtitle: "Taller sobre Gobernanza Metropolitana",
+        description: "Relanzamiento del Parlamento Metropolitano y taller de trabajo sobre gobernanza metropolitana para funcionarios y líderes de la comunidad."
+      }
+    ]
   }
 ];
 
@@ -190,6 +209,9 @@ function showDay(index) {
   tl.innerHTML = day.sessions.length
     ? day.sessions.map(renderSession).join("")
     : renderEmpty(day);
+  if (day.note && day.sessions.length) {
+    tl.insertAdjacentHTML("beforeend", `<li class="day-note">${escapeHtml(day.note)}</li>`);
+  }
 
   try { history.replaceState(null, "", `#dia-${index + 1}`); } catch (e) { /* sin historial */ }
 }
