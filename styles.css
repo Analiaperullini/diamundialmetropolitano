@@ -281,19 +281,31 @@ a.chip:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(13,27,46
 
 /* ===== Organizan ===== */
 .organizers { padding: 64px 0; }
-.org-list {
+.organizers .section-title { text-align: center; }
+.org-brand { display: flex; justify-content: center; margin: 0 0 28px; }
+.org-brand img { height: 96px; width: auto; }
+.org-logos {
   list-style: none; padding: 0; margin: 0;
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;
 }
-.org-list li {
-  font-size: 14px; font-weight: 600;
-  padding: 14px 16px;
-  border: 1px solid var(--line); border-radius: 8px;
-  border-left: 4px solid var(--green);
+.org-logos li {
+  flex: 0 1 calc((100% - 36px) / 4);
+  display: flex; align-items: center; justify-content: center;
+  height: 112px; padding: 14px;
+  background: #fff;
+  border: 1px solid var(--line); border-radius: 10px;
 }
-.org-list li:nth-child(4n+2) { border-left-color: var(--magenta); }
-.org-list li:nth-child(4n+3) { border-left-color: var(--blue); }
-.org-list li:nth-child(4n+4) { border-left-color: var(--yellow); }
+.org-logos img {
+  max-width: 100%; max-height: 76px;
+  width: auto; height: auto; object-fit: contain;
+}
+.org-hosts {
+  margin-bottom: 44px; padding-bottom: 40px;
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+}
+.org-logos--hosts { max-width: 640px; margin: 0 auto; }
+.org-logos--hosts li { flex-basis: calc((100% - 24px) / 3); }
 
 /* ===== Footer ===== */
 .site-footer { background: var(--night-900); color: rgba(255,255,255,.65); font-size: 13px; }
@@ -318,7 +330,13 @@ a.chip:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(13,27,46
 
 @media (max-width: 720px) {
   .container { padding: 0 16px; }
-  .venue-grid, .org-list { grid-template-columns: 1fr; }
+  .venue-grid { grid-template-columns: 1fr; }
+  .org-logos { gap: 10px; }
+  .org-logos li { flex-basis: calc((100% - 10px) / 2); }
+  .org-logos--hosts li { flex-basis: calc((100% - 20px) / 3); height: 84px; padding: 10px; }
+  .org-logos li { height: 96px; padding: 12px; }
+  .org-logos img { max-height: 64px; }
+  .org-brand img { height: 76px; }
   .session { grid-template-columns: 1fr; gap: 6px; }
   .session-time { padding-top: 0; color: var(--magenta-dark); }
   .tag { margin: 6px 0 0; display: table; top: 0; }
